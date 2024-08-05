@@ -1,9 +1,13 @@
 ---
+import Header from '../components/Header.astro'; // Ajusta la ruta según la ubicación de tu archivo
+import Footer from '../components/Footer.astro'; // Ajusta la ruta según la ubicación de tu archivo
+import '@fontsource-variable/onest';
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -17,34 +21,33 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Header />
+		<slot />
+		<Footer />
 		<slot />
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		color-scheme:light;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: 'Onest Variable',system-ui, sans-serif;
+
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+	body{
+		display: flex;
+		justify-content:center;
+		background-color:#E8e7E2;
+		color: #000;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 100vh;
 	}
+	main{
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
 </style>
