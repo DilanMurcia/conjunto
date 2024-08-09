@@ -1,42 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+const posts = await getCollection('inicio');
+const post = posts[0]; // Asumimos que solo tienes un post en esta colección
+
+console.log(posts);
 ---
 
 <Layout title="Bienvenido al Conjunto residencial">
-	<Card class="min-h-screen flex flex-col"
-	title="Noticias Destacadas"
-	body={`Mantente al día con las últimas noticias y eventos importantes del Conjunto Residencial Los Pinos. 
-	Aquí encontrarás actualizaciones sobre actividades comunitarias, mejoras en las instalaciones y eventos especiales.
-	No te pierdas de nada y conoce lo que está sucediendo en tu comunidad.`}
-	href="/news"
-	backgroundColor="bg-blue-200"
-	textColor="text-blue-900"
-  />
-  <br>
-  <Card 
-	title="Descripción del Conjunto"
-	body={`El Conjunto Residencial Los Pinos es un oasis de tranquilidad en el corazón de Bogotá. 
-	Con amplias zonas verdes, seguridad 24/7, y una comunidad amigable,
-	ofrecemos un entorno ideal para familias, profesionales y personas de todas las edades.
-	Disfruta de nuestras modernas instalaciones, que incluyen una piscina, gimnasio, salones de eventos y áreas recreativas para niños. 
-	Un lugar perfecto para vivir y disfrutar de la comodidad y el bienestar.`}
-	href="/residential-complex"
-	backgroundColor="bg-green-200"
-	textColor="text-green-900"
-	class="mt-4"
-  />
-  <br>
-  <Card
-	title="Información de Alquileres"
-	body={`¿Estás interesado en alquilar una propiedad en nuestro conjunto residencial? 
-	Aquí encontrarás toda la información que necesitas sobre disponibilidad, precios y características de nuestras propiedades en alquiler.
-	Conoce los detalles sobre los diferentes tipos de viviendas y encuentra la opción que mejor se adapte a tus necesidades.`}
-	href="/services-reservations"
-	backgroundColor="bg-red-200"
-	textColor="text-red-900"
-	class="mt-4"
-  />
+	{post.data.cards.map((card) => (//recorro el array de cards
+		<Card 
+			title={card.title}
+			body={card.body}
+			href={card.href}
+		/>
+	))}		
 </Layout>
 
 <style>
