@@ -1,38 +1,30 @@
-import express from 'express';
-import { handler as ssrHandler } from './dist/server/entry.mjs';
+import mysql from 'mysql2';
 
-const app = express();
-
-// Modifica esto en función de la opción `base` de tu archivo astro.config.mjs.
-// Deben coincidir. El valor predeterminado es "/".
-const base = '/inicio';
-
-// Servir archivos estáticos (por ejemplo, CSS, JS) desde la carpeta dist/client
-app.use(base, express.static('dist/client/'));
-
-// Definir endpoints
-app.get('/inicio', (req, res) => {
-  res.send('Contenido de la página de inicio');
+// Configuración de la conexión
+const connection = mysql.createConnection({
+  host: 'localhost', // Cambia a la dirección de tu servidor MySQL
+  user: 'dev_user', // Cambia al usuario de tu base de datos
+  password: 'dev_password', // Cambia a la contraseña de tu base de datos
+  database: 'conjunto_residencial' // Cambia al nombre de tu base de datos
 });
 
-app.get('/conjunto-residencial', (req, res) => {
-  res.send('Contenido de la página del conjunto residencial');
-});
+// Intento de conexión
+connection.connect((err) => {
+  if (err) {
+    console.error('Error al conectar a la base de datos:', err);
+    return;
+  }
+  console.log('Conexión exitosa a la base de datos');
 
-app.get('/administracion', (req, res) => {
-  res.send('Contenido de la página de administración');
-});
+  // Realizar una consulta de prueba
+  connection.query('SELECT * FROM users', (err, results) => {
+    if (err) {
+      console.error('Error al realizar la consulta:', err);
+    } else {
+      console.log('Resultados de la consulta:', results);
+    }
 
-app.get('/servicios-reservas', (req, res) => {
-  res.send('Contenido de la página de servicios y reservas');
+    // Cerrar la conexión a la base de datos
+    connection.end();
+  });
 });
-
-app.get('/noticias-actualidad', (req, res) => {
-  res.send('Contenido de la página de noticias y actualidad');
-});
-
-app.get('/mantenimiento-operaciones', (req, res) => {
-  res.send('Contenido de la página de mantenimiento y operaciones');
-});
-
-// Manejar el renderizado d
