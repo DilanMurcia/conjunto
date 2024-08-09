@@ -1,30 +1,44 @@
+// server.mjs
+import express from 'express';
 import mysql from 'mysql2';
+import dotenv from 'dotenv';
 
-// Configuración de la conexión
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 3000;
+
 const connection = mysql.createConnection({
-  host: 'localhost', // Cambia a la dirección de tu servidor MySQL
-  user: 'dev_user', // Cambia al usuario de tu base de datos
-  password: 'dev_password', // Cambia a la contraseña de tu base de datos
-  database: 'conjunto_residencial' // Cambia al nombre de tu base de datos
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
-// Intento de conexión
 connection.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err);
     return;
   }
-  console.log('Conexión exitosa a la base de datos');
+  console.log('Conexión a la base de datos establecida.');
+});
 
-  // Realizar una consulta de prueba
+// Ruta para la raíz del servidor
+app.get('/', (req, res) => {
+  res.send('Servidor corriendo. Accede a /users para ver los datos.');
+});
+
+app.get('/users', (req, res) => {
   connection.query('SELECT * FROM users', (err, results) => {
     if (err) {
-      console.error('Error al realizar la consulta:', err);
+      res.status(500).send('Error al realizar la consulta');
     } else {
-      console.log('Resultados de la consulta:', results);
+      res.json(results);
     }
-
-    // Cerrar la conexión a la base de datos
-    connection.end();
   });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
