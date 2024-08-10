@@ -2,13 +2,13 @@
 import express from 'express';
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
-
+// import cors from 'cors'; // Importar cors
 // Cargar variables de entorno desde el archivo .env
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+// app.use(cors()); // Habilitar CORS
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

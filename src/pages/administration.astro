@@ -1,7 +1,47 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import BillingAccounts from '../components/BillingAccounts.astro';
+import Layout from '../layouts/Layout.astro';
+import UsersTable from '../components/UsersTable.jsx';
 ---
 
 <Layout title="Administración">
-    
+  <section class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Consulta de Cuenta de Cobro</h2>
+    <BillingAccounts />
+    <UsersTable />
+    <!-- <ul class="list-disc pl-4">
+      <li><a href="/administration/cuenta-cobro/2024" class="text-blue-500 underline">Año Vigente</a></li>
+      <li><a href="/administration/cuenta-cobro/2023" class="text-blue-500 underline">Años Anteriores</a></li>
+    </ul> -->
+
+    <h2 class="text-2xl font-bold mb-4">Archivo</h2>
+    <ul class="list-disc pl-4">
+      <li>Póliza de Áreas Comunes</li>
+      <li>Reglamento de Propiedad Horizontal</li>
+      <li>Manual de Convivencia</li>
+      <li>Actas de Asamblea</li>
+      <li>Actas de Consejo de Administración</li>
+      <li>Informes de Gestión</li>
+    </ul>
+  </section>
+  <section class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Normas y Regulaciones</h2>
+    <ul class="list-disc pl-4">
+      <li>Manejo de Mascotas Potencialmente Peligrosas</li>
+      <li>Manejo de Desechos</li>
+      <li>Manejo de Rampas de Desplazamiento</li>
+      <li>Ley 675 de 2001</li>
+      <li>Manejo del Ruido</li>
+      <li>Código de Policía</li>
+    </ul>
+  </section>
+  <section class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Sugerencias</h2>
+    <ul class="list-disc pl-4">
+      <li>Publicidad Positiva GRUP</li>
+      <li>Seguridad</li>
+      <li>Aseo</li>
+      <li>Administración</li>
+    </ul>
+  </section>
 </Layout>

@@ -1,7 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Conjunto Residencial">
-    
+  <section class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Información Básica</h2>
+    <p class="mb-4">NIT: 123456789<br>Dirección: Calle Falsa 123, Bogotá<br>Número de apartamentos: 100<br>Pisos: 10</p>
+
+    <h2 class="text-2xl font-bold mb-4">Datos de Contacto</h2>
+    <p class="mb-4">Teléfonos: (123) 456-7890<br># de contacto del cuadrante: 987654321<br>Representantes legales: Juan Pérez</p>
+
+    <h2 class="text-2xl font-bold mb-4">Documentación</h2>
+    <ul class="list-disc pl-4">
+      <li>Confirmación del consejo de administración</li>
+      <li>Certificados de seguridad</li>
+    </ul>
+  </section>
 </Layout>

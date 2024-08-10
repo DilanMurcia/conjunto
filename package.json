@@ -12,10 +12,16 @@
   "dependencies": {
     "@astrojs/check": "^0.9.1",
     "@astrojs/node": "^8.3.2",
+    "@astrojs/react": "^3.6.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/onest": "^5.0.4",
     "astro": "^4.13.1",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "node-fetch": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
