@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-
+//npx astro sync
 // Definir la colección 'inicio'
 const inicio = defineCollection({
   type: 'content',
@@ -12,7 +12,7 @@ const inicio = defineCollection({
         body: z.string(),
         href: z.string(),
       })
-    )//cierro card
+    ).optional()//cierro card
   }),
 });//cierro sección de inicio
 export const collections = { inicio };
