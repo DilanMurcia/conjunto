@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import { getCollection } from 'astro:content';
+
 const posts = await getCollection('inicio');
 const post = posts[0]; // Asumimos que solo tienes un post en esta colección
-const cards = post.data.cards; // Asumiendo que tienes un array de cards en tus posts
+const cards = post.data.cards || []; // Aseguro de que cards siempre esté definido como un array
 
 ---
 
@@ -17,8 +18,6 @@ const cards = post.data.cards; // Asumiendo que tienes un array de cards en tus 
       href={card.href}
     />
   ))}
-
-
 
 </Layout>
 
