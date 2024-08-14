@@ -1,3 +1,44 @@
-<footer class="backgroundColor="bg-green >
+---
+interface Props {
+  class?: string;
+}
 
+const { class: additionalClasses = '' } = Astro.props;
+---
+
+<footer class={`bg-gray-800 text-white py-6 px-4 ${additionalClasses}`}>
+  <div class="container mx-auto text-center">
+    <p class="text-sm mb-4">© {new Date().getFullYear()} Tu Empresa. Todos los derechos reservados.</p>
+    <div class="flex justify-center space-x-4">
+      <a
+        href="https://github.com/DilanMurcia"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-gray-300 transition-colors"
+        aria-label="GitHub"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      <a
+        href="https://wa.me/+57316903828"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-gray-300 transition-colors"
+        aria-label="WhatsApp"
+      >
+        <i class="fab fa-whatsapp fa-2x"></i>
+      </a>
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=dilanalbertmurcia@gmail.com"
+        class="text-white hover:text-gray-300 transition-colors"
+        aria-label="Email"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+    </div>
+  </div>
 </footer>
+
+<style is:global>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+</style>
