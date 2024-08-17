@@ -3,6 +3,7 @@ import Header from '../components/Header.astro'; // Ajusta la ruta según la ubi
 import Footer from '../components/Footer.astro'; // Ajusta la ruta según la ubicación de tu archivo
 import Loader from '../components/Loader.astro'; // Ajusta la ruta según la ubicación de tu archivo
 import '@fontsource-variable/onest';
+import ChatBot from '../components/ChatBot';
  // Ajusta la ruta según la ubicación de tu archivo
 interface Props {
 	title: string;
@@ -33,6 +34,7 @@ const { title } = Astro.props;
 			<slot />
 		</main>
 		<Footer/>
+		<ChatBot/>
 	    <script>
 			window.addEventListener('load', () => {
 			  setTimeout(() => {
