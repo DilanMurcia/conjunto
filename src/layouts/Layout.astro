@@ -38,9 +38,9 @@ const { title } = Astro.props;
 	    <script>
 			window.addEventListener('load', () => {
 			  setTimeout(() => {
-				const loader = document.querySelector('.overlay');
+				const loader = document.querySelector('.overlay') as HTMLElement;
 				if (loader) {
-				  loader.style.display = 'none';
+				   loader.style.display = 'none';
 				}
 			  }, 1000); // Retraso adicional en milisegundos (1500 ms = 1.5 segundos)
 			});
